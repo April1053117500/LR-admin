@@ -37,6 +37,21 @@ module.exports = {
       errors: true
     },
     before: require('./mock/mock-server.js')
+
+    // proxy: {
+    //   // 匹配所有以 /dcimServer 开头的url
+    //   '/dev-api': {
+    //     // 请求的目标主机
+    //     target: 'http://10.11.102.8:8080',
+    //     changeOrigin: true,
+    //     // ws: true,  //如果要代理 websockets，配置这个参数
+    //     // 这样重写会把路径中 /dev-api 消去
+    //     pathRewrite: {
+    //       '^/dev-api': ''
+    //     },
+    //     logLevel: 'debug'
+    //   }
+    // }
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
