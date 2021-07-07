@@ -1,16 +1,17 @@
-@import './variables.scss';
-@import './mixin.scss';
-@import './transition.scss';
-@import './element-ui.scss';
-@import './sidebar.scss';
-@import './admin.scss';
+@import "./variables.scss";
+@import "./mixin.scss";
+@import "./transition.scss";
+@import "./element-ui.scss";
+@import "./sidebar.scss";
+@import "./admin.scss";
 
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, Arial, sans-serif;
 }
 
 label {
@@ -48,6 +49,12 @@ a:hover {
 div:focus {
   outline: none;
 }
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 
 .clearfix {
   &:after {
@@ -64,3 +71,25 @@ div:focus {
 .app-container {
   padding: 20px;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 9px;
+  -webkit-appearance: none;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 12px;
+}
+::-webkit-scrollbar {
+  background-color: #eee;
+  -webkit-appearance: none;
+}
+::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 10px;
+}
+// ::-webkit-scrollbar-button:end:increment, ::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-thumb {
+//     background-color: #ccc;
+//     border-radius: 5px;
+// }

@@ -5,6 +5,7 @@
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <navbar />
+        <!-- <tags-view /> -->
       </div>
       <app-main />
     </div>
@@ -12,15 +13,17 @@
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from './components'
+import { Navbar, Sidebar, AppMain, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
+import { constantRoutes } from '@/router'
 
 export default {
   name: 'Layout',
   components: {
     Navbar,
     Sidebar,
-    AppMain
+    AppMain,
+    TagsView
   },
   mixins: [ResizeMixin],
   computed: {
@@ -41,6 +44,17 @@ export default {
         mobile: this.device === 'mobile'
       }
     }
+  },
+  created() {
+    console.log('created==')
+    // 默认选中【财务管理】菜单
+    const routes = []
+    constantRoutes.map(item => {
+      if (item.parent && item.parent === 'visitor') {
+        routes.push(item)
+      }
+    })
+    this.$store.commit('SET_SIDEBAR_ROUTERS', routes)
   },
   methods: {
     handleClickOutside() {

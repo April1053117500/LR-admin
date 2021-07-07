@@ -56,49 +56,148 @@ export const constantRoutes = [
   },
 
   // {
-  //   path: '/example',
+  //   path: '/servers',
   //   component: Layout,
-  //   redirect: '/example/table',
-  //   name: 'Example',
-  //   meta: { title: 'Example', icon: 'el-icon-s-help' },
+  //   parent: 'none',
   //   children: [
   //     {
-  //       path: 'table',
-  //       name: 'Table',
-  //       component: () => import('@/views/table/index'),
-  //       meta: { title: 'Table', icon: 'table' }
-  //     },
-  //     {
-  //       path: 'tree',
-  //       name: 'Tree',
-  //       component: () => import('@/views/tree/index'),
-  //       meta: { title: 'Tree', icon: 'tree' }
+  //       path: 'index',
+  //       name: 'Servers',
+  //       component: () => import('@/views/servers/index'),
+  //       meta: { title: '服务器管理', icon: 'el-icon-ice-cream-round' }
   //     }
   //   ]
   // },
 
   // {
-  //   path: '/form',
+  //   path: '/cabinet',
   //   component: Layout,
+  //   parent: 'none',
   //   children: [
   //     {
   //       path: 'index',
-  //       name: 'Form',
-  //       component: () => import('@/views/form/index'),
-  //       meta: { title: 'Form', icon: 'form' }
+  //       name: 'Cabinet',
+  //       component: () => import('@/views/cabinet/index'),
+  //       meta: { title: '机柜管理', icon: 'table' }
+  //     }
+  //   ]
+  // },
+  {
+    path: '/meter-records',
+    component: Layout,
+    parent: 'finance',
+    children: [
+      {
+        path: 'index',
+        name: 'MeterRecords',
+        component: () => import('@/views/finance/meter-records'),
+        meta: { title: '抄表记录', icon: 'tree' }
+      }
+    ]
+  },
+
+  {
+    path: '/electricity-price',
+    component: Layout,
+    parent: 'finance',
+    children: [
+      {
+        path: 'index',
+        name: 'electricityPrice',
+        component: () => import('@/views/electricity-price/index'),
+        meta: { title: 'PUE管理', icon: 'el-icon-s-help' }
+      }
+    ]
+  },
+
+  // {
+  //   path: '/product-price',
+  //   component: Layout,
+  //   parent: 'finance',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'productPrice',
+  //       component: () => import('@/views/product-price/index'),
+  //       meta: { title: '产品单价管理', icon: 'el-icon-s-ticket' }
+  //     }
+  //   ]
+  // },
+
+  // {
+  //   path: '/electricity-meter',
+  //   component: Layout,
+  //   parent: 'finance',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'electricityMeter',
+  //       component: () => import('@/views/electricity-meter/index'),
+  //       meta: { title: '电量表管理', icon: 'el-icon-s-cooperation' }
   //     }
   //   ]
   // },
 
   {
-    path: '/servers',
+    path: '/bills',
     component: Layout,
+    redirect: '/bills/index',
+    parent: 'finance',
+    meta: { title: '账单管理', icon: 'el-icon-s-finance' },
     children: [
       {
         path: 'index',
-        name: 'Servers',
-        component: () => import('@/views/servers/index'),
-        meta: { title: '服务器管理', icon: 'el-icon-ice-cream-round' }
+        name: 'Bills',
+        component: () => import('@/views/bills/index'),
+        meta: { title: '电费账单' }
+      },
+      {
+        path: 'cabinet',
+        name: 'Bills',
+        component: () => import('@/views/bills/index'),
+        meta: { title: '机柜账单' }
+      }
+    ]
+  },
+
+  {
+    path: '/measuring-point',
+    component: Layout,
+    parent: 'resource',
+    children: [
+      {
+        path: 'index',
+        name: 'MeasuringPoint',
+        component: () => import('@/views/measuring-point/index'),
+        meta: { title: '计量点管理', icon: 'el-icon-s-finance' }
+      }
+    ]
+  },
+
+  {
+    path: '/measuring-point2',
+    component: Layout,
+    parent: 'resource',
+    children: [
+      {
+        path: 'index',
+        name: 'MeasuringPoint',
+        component: () => import('@/views/measuring-point/index'),
+        meta: { title: '资源查询', icon: 'el-icon-s-finance' }
+      }
+    ]
+  },
+
+  {
+    path: '/measuring-point3',
+    component: Layout,
+    parent: 'resource',
+    children: [
+      {
+        path: 'index',
+        name: 'MeasuringPoint',
+        component: () => import('@/views/measuring-point/index'),
+        meta: { title: '空间管理', icon: 'el-icon-s-finance' }
       }
     ]
   },
@@ -106,6 +205,7 @@ export const constantRoutes = [
   {
     path: '/customer',
     component: Layout,
+    parent: 'user',
     children: [
       {
         path: 'index',
@@ -117,79 +217,82 @@ export const constantRoutes = [
   },
 
   {
-    path: '/cabinet',
+    path: '/customer',
     component: Layout,
+    parent: 'user',
     children: [
       {
         path: 'index',
-        name: 'Cabinet',
-        component: () => import('@/views/cabinet/index'),
-        meta: { title: '机柜管理', icon: 'table' }
+        name: 'Customer',
+        component: () => import('@/views/customer/index'),
+        meta: { title: '用户管理', icon: 'form' }
       }
     ]
   },
 
   {
-    path: '/contract',
+    path: '/customer',
     component: Layout,
+    parent: 'workOrder',
     children: [
       {
         path: 'index',
-        name: 'Contract',
-        component: () => import('@/views/contract/index'),
-        meta: { title: '合同管理', icon: 'tree' }
+        name: 'WorkOrder',
+        component: () => import('@/views/customer/index'),
+        meta: { title: '上电工单', icon: 'form' }
       }
     ]
   },
 
   {
-    path: '/electricity-price',
+    path: '/visitor/reservation',
     component: Layout,
+    parent: 'visitor',
     children: [
       {
         path: 'index',
-        name: 'electricityPrice',
-        component: () => import('@/views/electricity-price/index'),
-        meta: { title: '电费单价管理', icon: 'el-icon-s-help' }
+        name: 'Reservation',
+        component: () => import('@/views/visitor/reservation'),
+        meta: { title: '预约管理', icon: 'form' }
       }
     ]
   },
-
   {
-    path: '/product-price',
+    path: '/visitor/account',
     component: Layout,
+    parent: 'visitor',
     children: [
       {
         path: 'index',
-        name: 'productPrice',
-        component: () => import('@/views/product-price/index'),
-        meta: { title: '产品单价管理', icon: 'el-icon-s-ticket' }
+        name: 'Account',
+        component: () => import('@/views/visitor/reservation'),
+        meta: { title: '账号管理', icon: 'form' }
       }
     ]
   },
-
   {
-    path: '/electricity-meter',
+    path: '/visitor/reservation2',
     component: Layout,
+    parent: 'visitor',
     children: [
       {
         path: 'index',
-        name: 'electricityMeter',
-        component: () => import('@/views/electricity-meter/index'),
-        meta: { title: '电量表管理', icon: 'el-icon-s-cooperation' }
+        name: 'Reservation',
+        component: () => import('@/views/visitor/reservation'),
+        meta: { title: '预约审批', icon: 'form' }
       }
     ]
   },
-
   {
-    path: '/bills',
+    path: '/visitor/inOut',
     component: Layout,
+    parent: 'visitor',
     children: [
       {
         path: 'index',
-        name: 'Bills',
-        component: () => import('@/views/bills/index'),
-        meta: { title: '账单管理', icon: 'el-icon-s-finance' }
+        name: 'InOut',
+        component: () => import('@/views/visitor/reservation'),
+        meta: { title: '出入管理', icon: 'form' }
       }
     ]
   },
@@ -199,6 +302,7 @@ export const constantRoutes = [
   //   component: Layout,
   //   redirect: '/nested/menu1',
   //   name: 'Nested',
+  //   parent: 'finance',
   //   meta: {
   //     title: 'Nested',
   //     icon: 'nested'

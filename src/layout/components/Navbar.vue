@@ -2,7 +2,8 @@
   <div class="navbar">
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
-    <breadcrumb class="breadcrumb-container" />
+    <breadcrumb v-if="false" class="breadcrumb-container" />
+    <top-nav id="topmenu-container" class="topmenu-container" />
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
@@ -35,11 +36,13 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import TopNav from '@/components/TopNav'
 
 export default {
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
+    TopNav
   },
   computed: {
     ...mapGetters([
@@ -64,7 +67,7 @@ export default {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
+  background: #3c8dbc;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .hamburger-container {
@@ -82,6 +85,12 @@ export default {
 
   .breadcrumb-container {
     float: left;
+  }
+
+  .topmenu-container {
+    position: absolute;
+    left: 50px;
+    background: #3c8dbc;
   }
 
   .right-menu {

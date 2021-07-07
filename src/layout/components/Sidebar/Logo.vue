@@ -24,8 +24,9 @@ export default {
   },
   data() {
     return {
-      title: 'Vue Admin Template',
-      logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+      title: '上海珑睿信息科技',
+      // logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png',
+      logo: require('@/assets/common/logo.png')
     }
   }
 }
@@ -55,8 +56,9 @@ export default {
     width: 100%;
 
     & .sidebar-logo {
-      width: 32px;
-      height: 32px;
+      // width: 32px;
+      // height: 32px;
+      height: 50px;
       vertical-align: middle;
       margin-right: 12px;
     }
