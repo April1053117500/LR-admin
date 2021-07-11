@@ -57,11 +57,11 @@ export default {
     // 侧边显示菜单
     childrenMenus() {
       const childrenMenus = []
-      this.routers.map(router => {
-        for (const item in router.children) {
+      // this.routers.map(router => {
+      //   for (const item in router.children) {
 
-        }
-      })
+      //   }
+      // })
       return constantRoutes.concat(childrenMenus)
     }
   },
