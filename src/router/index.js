@@ -46,13 +46,13 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: '首页', icon: 'dashboard' }
-    }]
+    redirect: '/visitor/inOut/index'
+    // children: [{
+    //   path: 'dashboard',
+    //   name: 'Dashboard',
+    //   component: () => import('@/views/dashboard/index'),
+    //   meta: { title: '首页', icon: 'dashboard' }
+    // }]
   },
 
   // {
@@ -153,7 +153,7 @@ export const constantRoutes = [
       },
       {
         path: 'cabinet',
-        name: 'Bills',
+        name: 'Cabinet',
         component: () => import('@/views/bills/index'),
         meta: { title: '机柜账单' }
       }
@@ -181,7 +181,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        name: 'MeasuringPoint',
+        name: 'MeasuringPoint2',
         component: () => import('@/views/measuring-point/index'),
         meta: { title: '资源查询', icon: 'el-icon-s-finance' }
       }
@@ -244,45 +244,45 @@ export const constantRoutes = [
     ]
   },
 
-  {
-    path: '/visitor/reservation',
-    component: Layout,
-    parent: 'visitor',
-    children: [
-      {
-        path: 'index',
-        name: 'Reservation',
-        component: () => import('@/views/visitor/reservation'),
-        meta: { title: '预约管理', icon: 'form' }
-      }
-    ]
-  },
-  {
-    path: '/visitor/account',
-    component: Layout,
-    parent: 'visitor',
-    children: [
-      {
-        path: 'index',
-        name: 'Account',
-        component: () => import('@/views/visitor/reservation'),
-        meta: { title: '账号管理', icon: 'form' }
-      }
-    ]
-  },
-  {
-    path: '/visitor/reservation2',
-    component: Layout,
-    parent: 'visitor',
-    children: [
-      {
-        path: 'index',
-        name: 'Reservation',
-        component: () => import('@/views/visitor/reservation'),
-        meta: { title: '预约审批', icon: 'form' }
-      }
-    ]
-  },
+  // {
+  //   path: '/visitor/reservation',
+  //   component: Layout,
+  //   parent: 'visitor',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Reservation',
+  //       component: () => import('@/views/visitor/reservation'),
+  //       meta: { title: '预约管理', icon: 'form' }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/visitor/account',
+  //   component: Layout,
+  //   parent: 'visitor',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Account',
+  //       component: () => import('@/views/visitor/reservation'),
+  //       meta: { title: '账号管理', icon: 'form' }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/visitor/reservation2',
+  //   component: Layout,
+  //   parent: 'visitor',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Reservation',
+  //       component: () => import('@/views/visitor/reservation'),
+  //       meta: { title: '预约审批', icon: 'form' }
+  //     }
+  //   ]
+  // },
   {
     path: '/visitor/inOut',
     component: Layout,
@@ -290,9 +290,16 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        name: 'InOut',
-        component: () => import('@/views/visitor/reservation'),
+        name: 'Index',
+        component: () => import('@/views/visitor/inOut'),
         meta: { title: '出入管理', icon: 'form' }
+      },
+      {
+        path: 'index/:visitNo',
+        name: 'InOut',
+        component: () => import('@/views/visitor/inOut'),
+        meta: { title: '出入管理', icon: 'form', activeMenu: '/visitor/inOut' },
+        hidden: true
       }
     ]
   },
