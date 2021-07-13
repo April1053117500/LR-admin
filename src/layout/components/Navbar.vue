@@ -52,6 +52,9 @@ export default {
       'name'
     ])
   },
+  created() {
+    this.$store.dispatch('user/getInfo')
+  },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')

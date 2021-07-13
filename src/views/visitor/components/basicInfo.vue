@@ -53,6 +53,20 @@
             />
           </el-form-item>
         </el-col>
+        <el-col :span="12">
+          <el-form-item label="预约人姓名" prop="visitUserName">
+            <el-input v-model="basicForm.visitUserName" type="text" placeholder="请输入" :disabled="isDisabled" />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="预约人电话" prop="visitUserPhone">
+            <el-input v-model="basicForm.visitUserPhone" type="text" placeholder="请输入" :disabled="isDisabled">
+              <el-select slot="prepend" v-model="basicForm.visitUserPhoneCode" placeholder="请选择" style="width:80px" :disabled="isDisabled">
+                <el-option label="+86" value="+86" />
+              </el-select>
+            </el-input>
+          </el-form-item>
+        </el-col>
       </el-row>
 
     </el-form>
@@ -77,14 +91,7 @@ export default {
   },
   data() {
     return {
-      basicForm: {
-        visitNo: '',
-        visitStatus: 1,
-        visitorCompany: '',
-        visitLocation: '',
-        visitComeDate: '',
-        visitLeaveDate: ''
-      },
+      basicForm: this.defaultBasicForm(),
       rules: {
         visitorCompany: [
           { required: true, message: '请填写公司名称', trigger: 'blur' }
@@ -103,7 +110,22 @@ export default {
   },
   watch: {
     basicInfo(newVal) {
-      this.basicForm = JSON.parse(JSON.stringify(newVal))
+      this.basicForm = newVal ? JSON.parse(JSON.stringify(newVal)) : this.defaultBasicForm()
+    }
+  },
+  methods: {
+    defaultBasicForm() {
+      return {
+        visitNo: '',
+        visitStatus: 1,
+        visitorCompany: '',
+        visitLocation: '',
+        visitComeDate: '',
+        visitLeaveDate: '',
+        visitUserName: '',
+        visitUserPhone: '',
+        visitUserPhoneCode: '+86'
+      }
     }
   }
 }

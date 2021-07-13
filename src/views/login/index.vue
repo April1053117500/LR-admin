@@ -14,11 +14,13 @@
         <el-input
           ref="username"
           v-model="loginForm.username"
+          style="width:50%"
           placeholder="用户名"
           name="username"
           type="text"
           tabindex="1"
         />
+        <span style="float:right;color:#889aa4;line-height:52px;margin-right:20px">{{ domain }}</span>
       </el-form-item>
 
       <el-form-item prop="password">
@@ -78,6 +80,7 @@ export default {
       }
     }
     return {
+      domain: '@staff.longruidc.com',
       loginForm: {
         username: '',
         password: ''
@@ -117,7 +120,10 @@ export default {
         if (valid) {
           this.loading = true
 
-          this.$store.dispatch('user/login', this.loginForm).then(() => {
+          this.$store.dispatch('user/login', {
+            username: `${this.loginForm.username}${this.domain}`,
+            password: this.loginForm.password
+          }).then(() => {
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch(() => {

@@ -83,7 +83,10 @@ export default {
               visitorCompany: res.data.visitorCompany,
               visitLocation: res.data.visitLocation[0],
               visitComeDate: res.data.visitComeDate,
-              visitLeaveDate: res.data.visitLeaveDate
+              visitLeaveDate: res.data.visitLeaveDate,
+              visitUserName: res.data.visitUserName,
+              visitUserPhone: res.data.visitUserPhone,
+              visitUserPhoneCode: res.data.visitUserPhoneCode
             }
             this.visitUsers = res.data.visitUsers || []
             this.visitCars = res.data.visitCars || []

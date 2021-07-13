@@ -42,7 +42,7 @@ module.exports = {
       // 匹配所有以 /dcimServer 开头的url
       '/dev-api': {
         // 请求的目标主机
-        target: 'http://10.11.102.8:8080',
+        target: 'http://10.11.102.8:8082',
         changeOrigin: true,
         // ws: true,  //如果要代理 websockets，配置这个参数
         // 这样重写会把路径中 /dev-api 消去
