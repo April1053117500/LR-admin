@@ -46,7 +46,6 @@ export default {
     }
   },
   created() {
-    console.log('created==')
     // 默认选中【财务管理】菜单
     const routes = []
     constantRoutes.map(item => {

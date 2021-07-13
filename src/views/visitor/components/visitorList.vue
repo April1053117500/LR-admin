@@ -41,24 +41,25 @@
         label="证件号码"
       />
       <el-table-column
-        prop="visitComeDate"
+        prop="actualComeDate"
         label="实际到场时间"
       >
         <template slot-scope="scope">
-          {{ scope.row.visitComeDate | timeFilter }}
+          {{ scope.row.actualComeDate | timeFilter }}
         </template>
       </el-table-column>
       <el-table-column
-        prop="visitLeaveDate"
+        prop="actualLeaveDate"
         label="实际离场时间"
       >
         <template slot-scope="scope">
-          {{ scope.row.visitLeaveDate | timeFilter }}
+          {{ scope.row.actualLeaveDate | timeFilter }}
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
-          <el-button class="mr20" type="text" @click="showActualDialog(scope.$index)">核对</el-button>
+          <el-button v-if="scope.row.checkStatus == 1" disabled class="mr20" type="text" @click="showActualDialog(scope.$index)">已核验</el-button>
+          <el-button v-else class="mr20" type="text" @click="showActualDialog(scope.$index)">核验</el-button>
           <!-- <el-button class="mr20" type="text" @click="showDialog(scope.$index)">编辑</el-button>
           <el-popconfirm
             title="确定删除吗？"
@@ -98,9 +99,9 @@
       </div>
     </el-dialog>
 
-    <el-dialog title="核对" :visible.sync="actualVisible">
+    <el-dialog title="核验" :visible.sync="actualVisible">
       <el-form ref="actualForm" :model="actualInfo" label-width="120px" label-position="right">
-        <el-form-item
+        <!-- <el-form-item
           label="实际到场时间"
           prop="actualComeDate"
           :rules="[
@@ -125,6 +126,17 @@
             default-time="12:00:00"
             :disabled="isDisabled"
           />
+          <el-input label="身份证号码" placeholder="请输入身份证号" prop="idNo" />
+        </el-form-item> -->
+        <el-form-item
+          label="身份证号码"
+          prop="idNo"
+          :rules="[
+            {required:true, message: '请输入身份证号码', trigger: 'blur'},
+            { validator: validateIdNo, trigger: 'blur' }
+          ]"
+        >
+          <el-input v-model="actualInfo.idNo" label="身份证号码" placeholder="请输入身份证号" prop="idNo" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -192,6 +204,7 @@ export default {
         ]
       },
       actualInfo: {
+        idNo: '',
         actualComeDate: undefined,
         actualLeaveDate: undefined
       },
@@ -205,6 +218,16 @@ export default {
     }
   },
   methods: {
+    validateIdNo(rule, value, callback) {
+      const idcardReg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/
+      if (value === '') {
+        callback(new Error('请再次输入密码'))
+      } else if (!idcardReg.test(value)) {
+        callback(new Error('身份证格式不正确'))
+      } else {
+        callback()
+      }
+    },
     defaultUserInfo() {
       return {
         name: '',
@@ -255,8 +278,9 @@ export default {
             id: this.recordId,
             visitUsers: [{
               id: this.userList[this.actualIndex].id,
-              actualComeDate: dayjs(this.actualInfo.actualComeDate).format('YYYY-MM-DD hh:mm'),
-              actualLeaveDate: dayjs(this.actualInfo.actualLeaveDate).format('YYYY-MM-DD hh:mm')
+              // actualComeDate: dayjs(this.actualInfo.actualComeDate).format('YYYY-MM-DD hh:mm'),
+              // actualLeaveDate: this.actualInfo.actualLeaveDate ? dayjs(this.actualInfo.actualLeaveDate).format('YYYY-MM-DD hh:mm') : ''
+              idNo: this.actualInfo.idNo
             }]
           }).then(res => {
             if (res.code === 200) {

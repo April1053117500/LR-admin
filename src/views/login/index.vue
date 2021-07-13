@@ -3,7 +3,8 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">登 录</h3>
+        <h3 class="title">珑睿科技-访客系统</h3>
+        <p class="sub-title">内部人员访问</p>
       </div>
 
       <el-form-item prop="username">
@@ -225,9 +226,14 @@ $light_gray:#eee;
     .title {
       font-size: 26px;
       color: $light_gray;
-      margin: 0px auto 40px auto;
+      margin: 0px auto 20px auto;
       text-align: center;
       font-weight: bold;
+    }
+    .sub-title{
+      text-align: center;
+      color: $light_gray;
+      margin: 0px auto 40px auto;
     }
   }
 

@@ -189,13 +189,13 @@ export const constantRoutes = [
   },
 
   {
-    path: '/measuring-point3',
+    path: '/space',
     component: Layout,
     parent: 'resource',
     children: [
       {
         path: 'index',
-        name: 'MeasuringPoint',
+        name: 'Space',
         component: () => import('@/views/measuring-point/index'),
         meta: { title: '空间管理', icon: 'el-icon-s-finance' }
       }
@@ -203,13 +203,13 @@ export const constantRoutes = [
   },
 
   {
-    path: '/customer',
+    path: '/guest',
     component: Layout,
     parent: 'user',
     children: [
       {
         path: 'index',
-        name: 'Customer',
+        name: 'Guest',
         component: () => import('@/views/customer/index'),
         meta: { title: '客户管理', icon: 'form' }
       }

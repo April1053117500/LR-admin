@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '珑睿科技',
+  title: '珑睿科技-内部版',
 
   /**
    * @type {boolean} true | false

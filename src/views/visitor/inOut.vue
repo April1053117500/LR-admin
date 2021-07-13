@@ -52,13 +52,12 @@ export default {
     }
   },
   created() {
-    console.log('this.route===', this.$route, this.$route.params.visitNo)
     this.visitNo = this.$route.params.visitNo
     this.visitNo && this.fetchData()
 
-    getLocationTree({ level: 0 }).then(res => {
-      console.log('res====', res)
-    })
+    // getLocationTree({ level: 0 }).then(res => {
+    //   console.log('res====', res)
+    // })
   },
   methods: {
     enterHandle() {
@@ -74,7 +73,6 @@ export default {
       checkVisitRecord({
         visitNo: this.visitNo || this.keywords
       }).then(res => {
-        console.log('1111====', res)
         this.loading && this.loading.close()
         if (res.code === 200) {
           if (this.visitNo) {
@@ -87,9 +85,9 @@ export default {
               visitComeDate: res.data.visitComeDate,
               visitLeaveDate: res.data.visitLeaveDate
             }
-            this.visitUsers = res.data.visitUsers
-            this.visitCars = res.data.visitCars
-            this.visitDevices = res.data.visitDevices
+            this.visitUsers = res.data.visitUsers || []
+            this.visitCars = res.data.visitCars || []
+            this.visitDevices = res.data.visitDevices || []
             this.reason = res.data.visitReason ? res.data.visitReason.split(',') : []
             this.remark = res.data.remarks
           } else {
