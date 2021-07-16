@@ -52,6 +52,10 @@ export default {
     isCollapse() {
       return !this.sidebar.opened
     }
+  },
+  created() {
+    console.log('11111')
+    console.log('this.$router.options.routes===', this.$router.options.routes)
   }
 }
 </script>

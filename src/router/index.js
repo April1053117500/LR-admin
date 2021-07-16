@@ -46,7 +46,7 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/visitor/inOut/index'
+    redirect: '/system/user'
     // children: [{
     //   path: 'dashboard',
     //   name: 'Dashboard',
@@ -54,89 +54,56 @@ export const constantRoutes = [
     //   meta: { title: '首页', icon: 'dashboard' }
     // }]
   },
-
-  // {
-  //   path: '/servers',
-  //   component: Layout,
-  //   parent: 'none',
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       name: 'Servers',
-  //       component: () => import('@/views/servers/index'),
-  //       meta: { title: '服务器管理', icon: 'el-icon-ice-cream-round' }
-  //     }
-  //   ]
-  // },
-
-  // {
-  //   path: '/cabinet',
-  //   component: Layout,
-  //   parent: 'none',
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       name: 'Cabinet',
-  //       component: () => import('@/views/cabinet/index'),
-  //       meta: { title: '机柜管理', icon: 'table' }
-  //     }
-  //   ]
-  // },
   {
-    path: '/meter-records',
+    path: '/system',
     component: Layout,
-    parent: 'finance',
+    meta: { title: '系统管理', icon: 'el-icon-ice-cream-round' },
     children: [
       {
-        path: 'index',
-        name: 'MeterRecords',
-        component: () => import('@/views/finance/meter-records'),
-        meta: { title: '抄表记录', icon: 'tree' }
+        path: 'user',
+        name: 's-user',
+        component: () => import('@/views/system/user/index'),
+        meta: { title: '人员管理', icon: 'el-icon-ice-cream-round' }
+      },
+      {
+        path: 'role',
+        name: 's-role',
+        component: () => import('@/views/system/role/index'),
+        meta: { title: '角色管理', icon: 'el-icon-ice-cream-round' }
+      },
+      {
+        path: 'dept',
+        name: 's-dept',
+        component: () => import('@/views/system/dept/index'),
+        meta: { title: '部门管理', icon: 'el-icon-ice-cream-round' }
+      },
+      {
+        path: 'post',
+        name: 's-post',
+        component: () => import('@/views/system/post/index'),
+        meta: { title: '岗位管理', icon: 'el-icon-ice-cream-round' }
+      },
+      {
+        path: 'menu',
+        name: 's-menu',
+        component: () => import('@/views/system/menu/index'),
+        meta: { title: '菜单管理', icon: 'el-icon-ice-cream-round' }
+      },
+      {
+        path: 'dict',
+        name: 's-dict',
+        component: () => import('@/views/system/dict/index'),
+        meta: { title: '字典管理', icon: 'el-icon-ice-cream-round' }
+      },
+      {
+        path: 'dict/detail',
+        name: 's-dict-detail',
+        component: () => import('@/views/system/dict/detail'),
+        meta: { title: '字典相亲', icon: 'el-icon-ice-cream-round', activeMenu: '/system/dict' },
+        hidden: true
       }
     ]
   },
-
-  {
-    path: '/electricity-price',
-    component: Layout,
-    parent: 'finance',
-    children: [
-      {
-        path: 'index',
-        name: 'electricityPrice',
-        component: () => import('@/views/electricity-price/index'),
-        meta: { title: 'PUE管理', icon: 'el-icon-s-help' }
-      }
-    ]
-  },
-
-  // {
-  //   path: '/product-price',
-  //   component: Layout,
-  //   parent: 'finance',
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       name: 'productPrice',
-  //       component: () => import('@/views/product-price/index'),
-  //       meta: { title: '产品单价管理', icon: 'el-icon-s-ticket' }
-  //     }
-  //   ]
-  // },
-
-  // {
-  //   path: '/electricity-meter',
-  //   component: Layout,
-  //   parent: 'finance',
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       name: 'electricityMeter',
-  //       component: () => import('@/views/electricity-meter/index'),
-  //       meta: { title: '电量表管理', icon: 'el-icon-s-cooperation' }
-  //     }
-  //   ]
-  // },
 
   {
     path: '/bills',
@@ -231,7 +198,7 @@ export const constantRoutes = [
   },
 
   {
-    path: '/customer',
+    path: '/customer1',
     component: Layout,
     parent: 'workOrder',
     children: [

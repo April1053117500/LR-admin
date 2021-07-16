@@ -15,7 +15,6 @@
 <script>
 import { Navbar, Sidebar, AppMain, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
-import { constantRoutes } from '@/router'
 
 export default {
   name: 'Layout',
@@ -44,16 +43,6 @@ export default {
         mobile: this.device === 'mobile'
       }
     }
-  },
-  created() {
-    // 默认选中【财务管理】菜单
-    const routes = []
-    constantRoutes.map(item => {
-      if (item.parent && item.parent === 'visitor') {
-        routes.push(item)
-      }
-    })
-    this.$store.commit('SET_SIDEBAR_ROUTERS', routes)
   },
   methods: {
     handleClickOutside() {

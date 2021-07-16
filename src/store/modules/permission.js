@@ -24,10 +24,9 @@ const permission = {
     }
   },
   actions: {
-    GenerateRoutes({ commit }) {
-      return new Promise(resolve => {
-
-      })
+    GenerateRoutes({ rootState, commit }) {
+      console.log(' this.$store.state===', rootState.settings.topNav)
+      commit('SET_SIDEBAR_ROUTERS', constantRoutes)
     }
   }
 }

@@ -2,8 +2,8 @@
   <div class="navbar">
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
-    <breadcrumb v-if="false" class="breadcrumb-container" />
-    <top-nav id="topmenu-container" class="topmenu-container" />
+    <breadcrumb class="breadcrumb-container" />
+    <!-- <top-nav id="topmenu-container" class="topmenu-container" /> -->
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
@@ -52,9 +52,9 @@ export default {
       'name'
     ])
   },
-  created() {
-    this.$store.dispatch('user/getInfo')
-  },
+  // created() {
+  //   this.$store.dispatch('user/getInfo')
+  // },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
@@ -155,5 +155,13 @@ export default {
       }
     }
   }
+}
+</style>
+<style>
+.el-breadcrumb__inner a, .el-breadcrumb__inner.is-link{
+  color: #fff !important;
+}
+.app-breadcrumb.el-breadcrumb .no-redirect{
+  color: #fff !important;
 }
 </style>
