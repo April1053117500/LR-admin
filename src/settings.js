@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '珑睿科技-内部版',
+  title: '珑睿科技-后台管理',
 
   /**
    * @type {boolean} true | false

@@ -12,7 +12,7 @@
         :collapse-transition="false"
         mode="vertical"
       >
-        <sidebar-item v-for="route in sidebarRouters" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item v-for="route in $router.options.routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -52,10 +52,6 @@ export default {
     isCollapse() {
       return !this.sidebar.opened
     }
-  },
-  created() {
-    console.log('11111')
-    console.log('this.$router.options.routes===', this.$router.options.routes)
   }
 }
 </script>

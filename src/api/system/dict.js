@@ -35,7 +35,6 @@ export function deleteDictType(params) {
 
 // 获取字典数据列表
 export function getDictDataList(params) {
-  console.log('params===', params)
   return request({
     url: `/sysDictData/dict/${params.type}`,
     method: 'get',

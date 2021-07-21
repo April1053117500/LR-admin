@@ -3,8 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">珑睿科技-访客系统</h3>
-        <p class="sub-title">内部人员访问</p>
+        <h3 class="title">珑睿科技-后台管理</h3>
       </div>
 
       <el-form-item prop="username">
@@ -20,7 +19,7 @@
           type="text"
           tabindex="1"
         />
-        <span style="float:right;color:#889aa4;line-height:52px;margin-right:20px">{{ domain }}</span>
+        <!-- <span style="float:right;color:#889aa4;line-height:52px;margin-right:20px">{{ domain }}</span> -->
       </el-form-item>
 
       <el-form-item prop="password">

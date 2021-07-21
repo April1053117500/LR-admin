@@ -33,9 +33,9 @@ const actions = {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
-        const { data } = response
-        commit('SET_TOKEN', data)
-        setToken(data)
+        // const { data } = response
+        commit('SET_TOKEN', response)
+        setToken(response)
         resolve()
       }).catch(error => {
         reject(error)
@@ -46,18 +46,16 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
-        const { data } = response
-
-        if (!data) {
+      getInfo().then(response => {
+        if (!response) {
           return reject('验证失败，请重新登录！')
         }
 
-        const { cn } = data
+        const { userName } = response
 
-        commit('SET_NAME', cn)
+        commit('SET_NAME', userName)
         // commit('SET_AVATAR', avatar)
-        resolve(data)
+        resolve(response)
       }).catch(error => {
         reject(error)
       })

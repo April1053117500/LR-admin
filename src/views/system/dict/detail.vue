@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-card class="box-card">
       <el-form ref="listQuery" :model="listQuery" :inline="true">
-        <el-form-item label="机柜编号">
+        <el-form-item label="字典标签">
           <el-input v-model="listQuery.name" />
         </el-form-item>
         <el-form-item>
@@ -32,7 +32,7 @@
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button type="text" class="mr10" @click="showDialog(scope.row)">编辑</el-button>
-            <el-popconfirm title="确定删除该条数据吗？" @onConfirm="handleDelete(scope.row.dictId)">
+            <el-popconfirm title="确定删除该条数据吗？" @onConfirm="handleDelete(scope.row.dictCode)">
               <el-button slot="reference" type="text">删除</el-button>
             </el-popconfirm>
           </template>
@@ -42,7 +42,7 @@
       <!-- <el-pagination class="mt20" :current-page="1" :page-sizes="[10, 20, 50, 100]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="400" @size-change="handleSizeChange" @current-change="handleCurrentChange" /> -->
     </el-card>
 
-    <el-dialog :title="`${titleType=='add'?'添加':'编辑'}类型`" :visible.sync="dialogVisible" width="600px" label-width="120px" label-position="right">
+    <el-dialog :title="`${dictCode?'编辑':'添加'}类型`" :visible.sync="dialogVisible" width="600px" label-width="120px" label-position="right">
       <el-form ref="modalRef" :model="formData" label-position="right" label-width="100px" :rules="rules">
         <el-form-item label="字典标签" prop="dictLabel">
           <el-input v-model="formData.dictLabel" />
@@ -103,9 +103,8 @@ export default {
       list: [],
       // 弹窗是否显示
       dialogVisible: false,
-      dictId: undefined,
+      dictCode: undefined,
       dictType: '',
-      titleType: 'add',
 
       formData: this.defaultFormData(),
       rules: {
@@ -150,8 +149,9 @@ export default {
     submitHandle() {
       this.$refs.modalRef.validate((valid) => {
         if (valid) {
-          if (this.titleType === 'edit') {
+          if (this.dictCode) {
             this.edit({
+              dictCode: this.dictCode,
               dictType: this.dictType,
               ...this.formData
             })
@@ -172,6 +172,7 @@ export default {
             message: '新增成功'
           })
           this.dialogVisible = false
+          this.getList()
         }
       })
     },
@@ -183,6 +184,7 @@ export default {
             message: '编辑成功'
           })
           this.dialogVisible = false
+          this.getList()
         }
       })
     },
@@ -201,8 +203,7 @@ export default {
     showDialog(row) {
       this.dialogVisible = true
       if (row) {
-        this.titleType = 'edit'
-        this.dictId = row.id
+        this.dictCode = row.dictCode
         this.formData = {
           dictLabel: row.dictLabel,
           dictValue: row.dictValue,
@@ -214,6 +215,7 @@ export default {
           remark: row.remark
         }
       } else {
+        this.dictCode = undefined
         this.$nextTick(() => {
           this.formData = this.defaultFormData()
           this.$refs.modalRef.resetFields()

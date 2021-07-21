@@ -25,7 +25,6 @@ const permission = {
   },
   actions: {
     GenerateRoutes({ rootState, commit }) {
-      console.log(' this.$store.state===', rootState.settings.topNav)
       commit('SET_SIDEBAR_ROUTERS', constantRoutes)
     }
   }
