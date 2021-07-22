@@ -199,7 +199,7 @@ export default {
     goDetail(row) {
       this.$router.push({
         path: '/system/dict/detail',
-        query: { type: row.dictType }
+        query: { type: row.dictType, typeId: row.dictId }
       })
     }
   }

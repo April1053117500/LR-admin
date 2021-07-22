@@ -43,7 +43,7 @@
     <el-dialog :title="`${deptId?'编辑':'添加'}部门`" :visible.sync="dialogVisible" width="600px" label-width="120px" label-position="right" :close-on-click-modal="false">
       <el-form ref="modalRef" :model="formData" label-position="right" label-width="100px" :rules="rules">
         <el-form-item label="上级部门">
-          <el-input v-model="ancestorsInfo.deptName" placeholder="请选择" disabled @click.native="showTree">
+          <el-input v-model="ancestorsInfo.deptName" placeholder="请选择" disabled @click.native="showDeptDialog">
             <el-button slot="append" icon="el-icon-search" />
           </el-input>
         </el-form-item>
@@ -136,7 +136,7 @@ export default {
           { required: true, message: '请输入显示排序', trigger: 'blur' }
         ]
       },
-      expandRowKeys: ['100'], // 默认展开
+      expandRowKeys: [], // 默认展开
       allRowKeys: [],
       ancestorsInfo: {}, // 部门选择框选中的信息
       deptVisible: false, // 部门选择弹窗是否可见
@@ -154,7 +154,7 @@ export default {
     this.getList()
   },
   methods: {
-    showTree() {
+    showDeptDialog() {
       this.deptVisible = true
       this.$nextTick(() => {
         this.$refs.tree.setCheckedKeys([this.ancestorsInfo.deptId])

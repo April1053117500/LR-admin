@@ -32,7 +32,7 @@
           <template slot-scope="scope">
             <el-button type="text" @click="showDialog(scope.row)">编辑</el-button>
             <!-- <el-button type="text" @click="showDialog(scope.row)">数据权限</el-button> -->
-            <el-popconfirm title="确定删除该条数据吗？" class="ml10" @onConfirm="handleDelete(scope.row.postId)">
+            <el-popconfirm title="确定删除该条数据吗？" class="ml10" @onConfirm="handleDelete(scope.row.roleId)">
               <el-button slot="reference" type="text">删除</el-button>
             </el-popconfirm>
           </template>
@@ -42,7 +42,7 @@
       <!-- <el-pagination class="mt20" :current-page="1" :page-sizes="[10, 20, 50, 100]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="400" @size-change="handleSizeChange" @current-change="handleCurrentChange" /> -->
     </el-card>
 
-    <el-dialog :title="`${postId?'编辑':'添加'}角色`" :visible.sync="dialogVisible" width="600px" label-width="120px" label-position="right">
+    <el-dialog :title="`${roleId?'编辑':'添加'}角色`" :visible.sync="dialogVisible" width="600px" label-width="120px" label-position="right">
       <el-form ref="modalRef" :model="formData" label-position="right" label-width="100px" :rules="rules">
         <el-form-item label="角色名称" prop="roleName">
           <el-input v-model="formData.roleName" />
@@ -120,7 +120,7 @@ export default {
       list: [],
       // 弹窗是否显示
       dialogVisible: false,
-      postId: undefined,
+      roleId: undefined,
 
       formData: defaultFormData(),
       rules: {
@@ -295,11 +295,14 @@ export default {
           roleSort: row.roleSort, // 角色顺序
           status: row.status, // 状态
           remark: row.remark, // 备注
-          menuIds: row.menuIds, // 菜单权限
+          menuIds: row.menuIds || [], // 菜单权限
           menuCheckStrictly: row.menuCheckStrictly // 父子联动
         }
+        this.$nextTick(() => {
+          this.$refs.menu.setCheckedKeys(this.formData.menuIds.map((item) => item + ''), true)
+        })
       } else {
-        this.postId = undefined
+        this.roleId = undefined
         this.$nextTick(() => {
           this.formData = defaultFormData()
           this.$refs.modalRef.resetFields()

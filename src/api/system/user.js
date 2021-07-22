@@ -32,3 +32,12 @@ export function deleteUser(params) {
     data: params
   })
 }
+
+// 给人员分配角色
+export function grantRole(params) {
+  return request({
+    url: `/sysUser/grant/role`,
+    method: 'get',
+    params: params
+  })
+}

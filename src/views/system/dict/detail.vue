@@ -94,6 +94,9 @@ export default {
   components: { lrPagination },
   data() {
     return {
+      total: 0,
+      pageNum: 1,
+      pageSize: 10,
       listLoading: false,
       // 模糊搜索数据
       listQuery: {
@@ -122,6 +125,7 @@ export default {
   },
   created() {
     this.dictType = this.$route.query.type
+    this.dictId = this.$route.query.typeId
     this.getList()
   },
   methods: {
@@ -153,11 +157,13 @@ export default {
             this.edit({
               dictCode: this.dictCode,
               dictType: this.dictType,
+              typeId: this.dictId,
               ...this.formData
             })
           } else {
             this.add({
               dictType: this.dictType,
+              typeId: this.dictId,
               ...this.formData
             })
           }

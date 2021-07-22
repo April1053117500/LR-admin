@@ -14,6 +14,22 @@ import router from './router'
 
 import '@/icons' // icon
 import '@/permission' // permission control
+import { getDictDataList } from '@/api/system/dict'
+
+// 全局方法挂载
+Vue.prototype.getDicts = getDictDataList
+
+Vue.prototype.msgSuccess = function(msg) {
+  this.$message({ showClose: true, message: msg, type: 'success' })
+}
+
+Vue.prototype.msgError = function(msg) {
+  this.$message({ showClose: true, message: msg, type: 'error' })
+}
+
+Vue.prototype.msgInfo = function(msg) {
+  this.$message.info(msg)
+}
 
 /**
  * If you don't want to use mock-server
@@ -29,7 +45,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // set ElementUI lang to EN
-Vue.use(ElementUI, { locale })
+Vue.use(ElementUI, {
+  locale,
+  size: 'small' || 'medium' // set element-ui default size
+})
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
 
