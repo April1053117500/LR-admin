@@ -57,44 +57,44 @@ export const constantRoutes = [
   {
     path: '/system',
     component: Layout,
-    meta: { title: '系统管理', icon: 'el-icon-ice-cream-round' },
+    meta: { title: '系统管理', icon: 'el-icon-setting' },
     redirect: '/system/user',
     children: [
       {
         path: 'user',
         name: 's-user',
         component: () => import('@/views/system/user/index'),
-        meta: { title: '人员管理', icon: 'el-icon-ice-cream-round' }
+        meta: { title: '人员管理', icon: 'el-icon-user-solid' }
       },
       {
         path: 'role',
         name: 's-role',
         component: () => import('@/views/system/role/index'),
-        meta: { title: '角色管理', icon: 'el-icon-ice-cream-round' }
+        meta: { title: '角色管理', icon: 'el-icon-s-goods' }
       },
       {
         path: 'dept',
         name: 's-dept',
         component: () => import('@/views/system/dept/index'),
-        meta: { title: '部门管理', icon: 'el-icon-ice-cream-round' }
+        meta: { title: '部门管理', icon: 'el-icon-s-fold' }
       },
       {
         path: 'post',
         name: 's-post',
         component: () => import('@/views/system/post/index'),
-        meta: { title: '岗位管理', icon: 'el-icon-ice-cream-round' }
+        meta: { title: '岗位管理', icon: 'el-icon-s-cooperation' }
       },
       {
         path: 'menu',
         name: 's-menu',
         component: () => import('@/views/system/menu/index'),
-        meta: { title: '菜单管理', icon: 'el-icon-ice-cream-round' }
+        meta: { title: '菜单管理', icon: 'el-icon-menu' }
       },
       {
         path: 'dict',
         name: 's-dict',
         component: () => import('@/views/system/dict/index'),
-        meta: { title: '字典管理', icon: 'el-icon-ice-cream-round' }
+        meta: { title: '字典管理', icon: 'el-icon-s-help' }
       },
       {
         path: 'dict/detail',

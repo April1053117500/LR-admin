@@ -10,6 +10,7 @@
         :unique-opened="false"
         :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
+        :default-openeds="['/system']"
         mode="vertical"
       >
         <sidebar-item v-for="route in $router.options.routes" :key="route.path" :item="route" :base-path="route.path" />

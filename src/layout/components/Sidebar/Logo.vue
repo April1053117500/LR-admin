@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      title: '珑睿科技',
+      title: '珑睿科技后台管理',
       // logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png',
       logo: require('@/assets/common/logo_white.png')
     }

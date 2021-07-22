@@ -33,7 +33,7 @@
               <el-input v-model="listQuery.name" />
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" icon="el-icon-search">搜索</el-button>
+              <el-button type="primary" icon="el-icon-search" @click="pageNum=1;getList()">搜索</el-button>
             </el-form-item>
           </el-form>
 
@@ -385,7 +385,8 @@ export default {
       this.listLoading = true
       getUserList({
         pageNum: this.pageNum,
-        pageSize: this.pageSize
+        pageSize: this.pageSize,
+        userName: this.listQuery.name
       }).then(res => {
         this.total = res.total
         this.list = res.list

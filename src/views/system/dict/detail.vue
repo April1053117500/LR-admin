@@ -57,7 +57,7 @@
           <el-input v-model="formData.cssClass" />
         </el-form-item>
         <el-form-item label="字典排序" prop="dictSort">
-          <el-input v-model="formData.dictSort" />
+          <el-input-number v-model="formData.dictSort" controls-position="right" :min="0" />
         </el-form-item>
         <el-form-item label="回显样式" prop="listClass">
           <el-input v-model="formData.listClass" />
