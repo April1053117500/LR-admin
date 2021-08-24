@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 获取部门列表
 export function getDeptList(params) {
   return request({
-    url: `/sysDept/list`,
+    url: `auth/sysDept/list`,
     method: 'post',
     data: params
   })
@@ -12,7 +12,7 @@ export function getDeptList(params) {
 // 新增部门
 export function addDept(params) {
   return request({
-    url: `/sysDept/add`,
+    url: `auth/sysDept/add`,
     method: 'post',
     data: params
   })
@@ -20,7 +20,7 @@ export function addDept(params) {
 // 编辑部门
 export function editDept(params) {
   return request({
-    url: `/sysDept/update`,
+    url: `auth/sysDept/update`,
     method: 'post',
     data: params
   })
@@ -28,7 +28,7 @@ export function editDept(params) {
 // 删除部门
 export function deleteDept(params) {
   return request({
-    url: `/sysDept/delete/${params.id}`,
+    url: `auth/sysDept/delete/${params.id}`,
     method: 'post',
     data: params
   })

@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: `login`,
+    url: `auth/login`,
     method: 'post',
     data: data
   })
@@ -10,7 +10,7 @@ export function login(data) {
 
 export function getInfo() {
   return request({
-    url: '/sysUser/token',
+    url: 'auth/sysUser/token',
     method: 'get'
   })
 }

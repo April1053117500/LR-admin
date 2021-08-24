@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 获取菜单列表
 export function getMenuList(params) {
   return request({
-    url: `/sysMenu/list`,
+    url: `auth/sysMenu/list`,
     method: 'post',
     data: params
   })
@@ -12,7 +12,7 @@ export function getMenuList(params) {
 // 新增菜单
 export function addMenu(params) {
   return request({
-    url: `/sysMenu/add`,
+    url: `auth/sysMenu/add`,
     method: 'post',
     data: params
   })
@@ -20,7 +20,7 @@ export function addMenu(params) {
 // 编辑菜单
 export function editMenu(params) {
   return request({
-    url: `/sysMenu/update`,
+    url: `auth/sysMenu/update`,
     method: 'post',
     data: params
   })
@@ -28,7 +28,7 @@ export function editMenu(params) {
 // 删除菜单
 export function deleteMenu(params) {
   return request({
-    url: `/sysMenu/delete/${params.id}`,
+    url: `auth/sysMenu/delete/${params.id}`,
     method: 'post',
     data: params
   })
