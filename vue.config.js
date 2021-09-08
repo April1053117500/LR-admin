@@ -24,14 +24,14 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: '/',
-  outputDir: 'dist',
-  assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
-  productionSourceMap: false,
+  publicPath: '/', // 基本路径
+  outputDir: 'dist', // 配置文件中的值，用于修改打包文件名称
+  assetsDir: 'static', // 输出的资源，所在的文件夹
+  lintOnSave: process.env.NODE_ENV === 'development', // eslint-loader 是否在保存的时候检查
+  productionSourceMap: false, // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建
   devServer: {
-    port: port,
-    open: true,
+    port: port, // 端口号
+    open: true, // 配置自动启动浏览器 true/false
     overlay: {
       warnings: false,
       errors: true
